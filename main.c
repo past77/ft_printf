@@ -25,7 +25,7 @@ int	main(void)
 	//ft_printf("%d\n", 1);
 		
 	// ft_printf("%5c", 'f');
-	y = ft_printf("%-+23.12d", +4242);
+	y = ft_printf("%10s is a string", "this");
 	//ft_printf("% d\n", -42);
 
 
@@ -47,7 +47,7 @@ int	main(void)
 	//ft_printf("%523d\n", -2);
 	//ft_printf("%s %s\n", "test", "test2");
 	
-	printf("WMY: %d\n", y );
+	printf("\nWMY: %d\n", y );
 	
 	//ft_printf("|------------------------------------|\nend of my printf\n|------------------------------------|");
 	//ft_printf("\n");
@@ -70,7 +70,7 @@ int	main(void)
 	//printf("or: %-2c\n", 'Fcuk');
 	int i;
 	//i = printf("my: %c\n %c\n" , '3', '4');
-	i = printf("%-+23.12d", +4242);
+	i = printf("%10s is a string", "this");
 	//printf("% d\n", -42);
 	//printf("%5c", 'f');
 //	i = printf("my: %+d %+d\n%-5d\n" , -3384747, 4, 42);
@@ -85,7 +85,7 @@ int	main(void)
 			//printf("my: %05c .. %c\n", 'Fcuk', 'you');
 			//printf("my: %5c . %c\n", 'Fcuk', 'you');
 
-printf("WOR: %d\n", i);
+printf("\nWOR: %d\n", i);
 
 	//printf("%ld\n", 3394994430955996965);
  //printf("%5...2s\n",  "st");
