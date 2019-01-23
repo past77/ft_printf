@@ -12,25 +12,27 @@
 
 #include "ft_printf.h"
 
-static void	rape_decimal(intmax_t num, char *str, int *i)
+static void	rape_digit(uintmax_t num, char *str, int *i, int base)
 {
-	char *values = "0123456789";
+	char *values;
 
-	if (num > 9 || num < -9)
-		rape_decimal(num / 10, str, i);
-	str[(*i)++] = values[num < 0 ? -(num % 10) : (num % 10)];
+	*values = "0123456789abcdef";
+	if (num >= (uintmax_t)base)
+		rape_decimal(num / base, str, i, base);
+	str[(*i)++] = values[num % base];
 }
 
-char	*ft_llongitoa(intmax_t num)
+char	*ft_lit_base(intmax_t num, int base)
 {
 	int 	i;
 	char	*str;
 
 	i = 0;
-	str = (char*)malloc(32);
-	if (!str)
+	if (!(str = (char*)malloc(32)))
 		return (NULL);
-	rape_decimal(num, str, &i);
+	if (base > 16 || base < 2)
+		return (NULL);
+	rape_digit(num, str, &i ,base);
 	str[i] = '\0';
 	return (str);
 } 

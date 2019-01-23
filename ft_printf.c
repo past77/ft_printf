@@ -65,7 +65,7 @@ int		ft_parse_f(t_struc *form)
 
 t_struc	*ft_init_other(t_struc *form)
 {
-	form->specificators = "idscuoxbpDSCUX%";
+	form->specificators = "idscuoxpX%";
 	form->sign = "-+# 0";
 	form->lens = "lhzj";
 	form->index = '\0';

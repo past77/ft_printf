@@ -81,19 +81,20 @@ void		*ft_write_width(t_struc *form, intmax_t num);
 void		*ft_write_pluswidth(t_struc *form, intmax_t num);
 void		*ft_write_owidth(t_struc *form, intmax_t num);
 void		*ft_write_other(t_struc *form, intmax_t num);
-void		*pt_press_1(t_struc *form, intmax_t num);
+void		*pt_precision(t_struc *form, intmax_t num);
 void		*ft_ret(t_struc *form, intmax_t num);
-void	*ft_prespl(t_struc *form, intmax_t num, int i, int j);
+void		*ft_prespl(t_struc *form, intmax_t num, int i, int j);
 void		*ft_presm(t_struc *form,intmax_t num, int i, int j);
-void	*ft_compress(t_struc *form, intmax_t num, int i);
+void		*ft_compress(t_struc *form, intmax_t num, int i);
 void 		*ft_lesspres(t_struc *form, intmax_t num, int i, int j, char *string);
 t_struc		*work_w_press(t_struc *form, intmax_t num);
+void		*ft_owidth_p(t_struc *form, intmax_t num);
 //string
 t_struc		*pt_string(t_struc *form);
 void		pr_str(t_struc *form, char cha, int i);
 
 
-char		*ft_llongitoa(intmax_t num);
+char	*ft_lit_base(intmax_t num, int base)
 
 
 

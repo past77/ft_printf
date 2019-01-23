@@ -23,5 +23,7 @@ t_struc	*choose_type(t_struc *form)
 		pt_digit(form);
 	else if (form->s_flag == 's')
 		pt_string(form);
-	return (form); 
+	else if (form->s_flag == 'x' || form->s_form == 'X')
+		pt_sixteen(form);
+	return(form); 
 }
