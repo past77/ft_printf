@@ -49,3 +49,53 @@ size_t		len_of_nbr(intmax_t nb)
 		i++;
 	return (i);
 }
+
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char	*ss1;
+	char	*ss2;
+	char	*fml;
+	int		len;
+
+	if (!s1 || !s2)
+		return (NULL);
+	ss1 = (char *)s1;
+	ss2 = (char *)s2;
+	len = ft_strlen(ss1) + ft_strlen(ss2);
+	fml = (char *)malloc(sizeof(*fml) * (len + 1));
+	if (fml == NULL)
+		return (NULL);
+	ft_strcpy(fml, ss1);
+	ft_strcat(fml, s2);
+	return (fml);
+}
+
+char	*ft_strcat(char *s1, const char *s2)
+{
+	int cout;
+	int i;
+
+	i = 0;
+	cout = ft_strlen(s1);
+	while (s2[i] != '\0')
+	{
+		s1[cout + i] = s2[i];
+		i++;
+	}
+	s1[cout + i] = '\0';
+	return (s1);
+}
+
+char	*ft_strcpy(char *dst, const char *src)
+{
+	int i;
+
+	i = 0;
+	while (src[i] != '\0')
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	dst[i] = '\0';
+	return (dst);
+}

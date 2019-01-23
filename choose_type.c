@@ -23,7 +23,11 @@ t_struc	*choose_type(t_struc *form)
 		pt_digit(form);
 	else if (form->s_flag == 's')
 		pt_string(form);
-	else if (form->s_flag == 'x' || form->s_form == 'X')
-		pt_sixteen(form);
+	else if (form->s_flag == 'x' || form->s_flag == 'X')
+		ft_bases(form, 16);
+	else if (form->s_flag == 'o')
+		ft_bases(form, 8);
+	else if (form->s_flag == 'b')
+		ft_bases(form, 2);
 	return(form); 
 }

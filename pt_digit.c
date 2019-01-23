@@ -12,7 +12,6 @@
 
 #include "ft_printf.h"
 
-
 static intmax_t		do_number(t_struc *form)
 {
 	intmax_t num;

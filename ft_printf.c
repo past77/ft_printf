@@ -53,7 +53,7 @@ int		ft_parse_f(t_struc *form)
 			ft_init_other(form);
 			ft_separ_fnc(form);
 		}
-		else 
+		else if (form->s_flag != 'x')
 		{
 			ft_putchar(form->format[form->i]);
 			form->ret_nb++;

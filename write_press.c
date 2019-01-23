@@ -126,9 +126,10 @@ void	*ft_compress(t_struc *form, intmax_t num, int i)
 {
 	char *string;
 	char *str;
+	//staic char pr[];
 
-	if (num < 0)
-		write(1, "-", 1);
+	if (num < 0) //////  pr = (num < 0) ? '-' : '+';
+		write(1, "-", 1);// write (1, &pr, 1);
 	else
 		 write(1, "+", 1);
 	if (form->press > i)

@@ -16,7 +16,7 @@ CC = gcc
 
 SRC = 	ft_printf.c  pt_digit.c pt_string.c lib_fn1.c lib_fn2.c lib_fn3.c perc_and_char.c \
  annonce_flags.c choose_type.c ft_write_pt1.c ft_write_pt2.c ft_write_pt3.c write_press.c \
- write_main_press.c
+ write_main_press.c ft_lllitoa.c
 
 OBJ = $(SRC:.c=.o)
 

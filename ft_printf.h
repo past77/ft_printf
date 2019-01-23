@@ -22,7 +22,7 @@
 typedef struct	s_struc
 {
 	va_list	ap;
-	size_t 	i;
+	size_t	i;
 	char	*sign;
 	char	space;
 	char	zero;
@@ -34,19 +34,16 @@ typedef struct	s_struc
 	int		ll;
 	int		h;
 	int		hh;
-	int	j;
-	int 	z;
+	int		j;
+	int		z;
 	int		press;
 	int		ret_nb;
-	char 	*format;
-	int 	len;
-	char 	*lens;
-	char 	*specificators;
-	int 	index;
-	int 	fd;
-	//char 	converse[6];
-	//char 	ar_flag[2];
-	char 	s_flag;
+	char	*format;
+	int		len;
+	char	*lens;
+	char	*specificators;
+	int		index;
+	char	s_flag;
 }				t_struc;
 
 int			ft_printf(const char *format, ...);
@@ -54,23 +51,24 @@ int			ft_printf(const char *format, ...);
 
 t_struc		*ft_init_li(t_struc *form);
 t_struc		parse_a(t_struc *form);
-int 		ft_parse_f(t_struc *form);
+int			ft_parse_f(t_struc *form);
 t_struc		*ft_init_other(t_struc *form);
 t_struc		*p_specifer(t_struc *form);
 t_struc		*choose_type(t_struc *form);
 t_struc		*p_converse(t_struc *form);
 t_struc		*p_width(t_struc *form);
 t_struc		*p_press(t_struc *form);
-int 		ft_separ_fnc(t_struc *form);
+int			ft_separ_fnc(t_struc *form);
 t_struc		*p_len(t_struc *form);
 t_struc		*pt_char(t_struc *form);
-void 		*pt_width_c(t_struc *form, char c, int a);
+void			*pt_width_c(t_struc *form, char c, int a);
 t_struc		*pt_persent(t_struc *form);
 t_struc		*pt_digit(t_struc *form);
 t_struc		*choose_index(t_struc *form, intmax_t num);
 
-void ft_write_u(t_struc *form, intmax_t num);
-void ft_write_dig_pl(t_struc *form, intmax_t num);
+void		ft_write_u(t_struc *form, intmax_t num);
+void		ft_write_dig_pl(t_struc *form, intmax_t num);
+void		ft_write_dig(t_struc *form, intmax_t num);
 
 void		*ft_write_minus(t_struc *form, intmax_t num);
 void		*ft_write_common(t_struc *form, intmax_t num);
@@ -86,7 +84,7 @@ void		*ft_ret(t_struc *form, intmax_t num);
 void		*ft_prespl(t_struc *form, intmax_t num, int i, int j);
 void		*ft_presm(t_struc *form,intmax_t num, int i, int j);
 void		*ft_compress(t_struc *form, intmax_t num, int i);
-void 		*ft_lesspres(t_struc *form, intmax_t num, int i, int j, char *string);
+void		*ft_lesspres(t_struc *form, intmax_t num, int i, int j, char *string);
 t_struc		*work_w_press(t_struc *form, intmax_t num);
 void		*ft_owidth_p(t_struc *form, intmax_t num);
 //string
@@ -94,7 +92,12 @@ t_struc		*pt_string(t_struc *form);
 void		pr_str(t_struc *form, char cha, int i);
 
 
-char	*ft_lit_base(intmax_t num, int base)
+char		*ft_lit_base(intmax_t num, int base);
+t_struc		*ft_bases(t_struc *form, int base);
+void		*choose_signs(t_struc *form);
+
+void		fill_hash(t_struc *form);
+void		fill_width(t_struc *form);
 
 
 
@@ -111,10 +114,15 @@ size_t		len_of_nbr(intmax_t nb);
 void		*ft_memalloc(size_t size);
 char		*ft_strndup(const char *str, size_t i);
 void		ft_putstr(const char *str);
+char		*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strcat(char *s1, const char *s2);
+char	*ft_strcpy(char *dst, const char *src);
+char	*ft_strdup(const char *src);
+int	ft_strncmp(const char *s1, const char *s2, size_t n);
 
-char	*ft_itoa(intmax_t num);
+char		*ft_itoa(intmax_t num);
 //int	ft_putchar_fd(char c);//, int fd);
-void ft_write_dig(t_struc *form, intmax_t num);
+
 
 
 /*int			ft_putstr(char *str);
