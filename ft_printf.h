@@ -21,6 +21,7 @@
  
 typedef struct	s_struc
 {
+	char 	*help;
 	va_list	ap;
 	size_t	i;
 	char	*sign;
@@ -92,7 +93,7 @@ t_struc		*pt_string(t_struc *form);
 void		pr_str(t_struc *form, char cha, int i);
 
 
-char		*ft_lit_base(intmax_t num, int base);
+char		*ft_lit_base(intmax_t num, int base, t_struc *form);
 t_struc		*ft_bases(t_struc *form, int base);
 void		*choose_signs(t_struc *form);
 

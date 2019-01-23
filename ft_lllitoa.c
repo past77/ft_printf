@@ -35,18 +35,27 @@ intmax_t	do_unsign_nb(t_struc *form)
 	if (num == 0 && form->s_flag != 'o')
 		form->hash = 0;
 }
+static void	rape_ldigit(uintmax_t num, char *str, int *i, int base)
+{
+	char *lval;
+
+	lval = "0123456789ABCDEF";
+	if (num >= (uintmax_t)base)
+		rape_ldigit(num / base, str, i, base);
+	str[(*i)++] = lval[num % base];
+}
 
 static void	rape_digit(uintmax_t num, char *str, int *i, int base)
 {
-	char *values;
-
-	values = "0123456789abcdef";
+	char *val;
+	
+	val = "0123456789abcdef";
 	if (num >= (uintmax_t)base)
 		rape_digit(num / base, str, i, base);
-	str[(*i)++] = values[num % base];
+	str[(*i)++] = val[num % base];
 }
 
-char	*ft_lit_base(intmax_t num, int base)
+char	*ft_lit_base(intmax_t num, int base, t_struc *form)
 {
 	int		i;
 	char	*str;
@@ -57,7 +66,10 @@ char	*ft_lit_base(intmax_t num, int base)
 		return (NULL);
 	if (base > 16 || base < 2)
 		return (NULL);
-	rape_digit(num, str, &i ,base);
+	if (form->s_flag == 'x')
+		rape_digit(num, str, &i ,base);
+	else
+		rape_ldigit(num, str, &i ,base);
 	str[i] = '\0';
 	return (str);
 } 
@@ -66,14 +78,22 @@ char	*ft_lit_base(intmax_t num, int base)
 void		fill_hash(t_struc *form)
 {
 	char	*buf;
-	char	*hash;
-	int		hs;
-
-	hs = (form->s_flag == 'x' || form->s_flag == 'X') ? 1 : 0;
-	hash = hs ? ft_strdup("0x") : ft_strdup("0");
+	static char	*hash = NULL;
+	int	hs;
+	int	lhs;
+	if (form->s_flag == 'x')
+	{
+		hs = (form->s_flag == 'x') ? 1 : 0;
+		hash = hs ? ft_strdup("0x") : ft_strdup("0");
+	}
+	else if (form->s_flag == 'X')
+	{
+		lhs = (form->s_flag == 'X') ? 1 : 0;
+		hash = lhs ? ft_strdup("0X") : ft_strdup("0");
+	}
 	if (form->zero == '0')
 	{
-		form->width = (hs == 1) ? (form->width - 1) : (form->width - 2);
+		form->width = (hs == 1 || lhs == 1) ? (form->width - 1) : (form->width - 2);
 	/*
 		if (hs == 1)
 			form->width - 1; //form->width = (hs == 1) ? (form-width - 1) : (form->width - 2);
@@ -81,10 +101,10 @@ void		fill_hash(t_struc *form)
 			form->width - 2;
 		fill_width(form); */
 	}
-	if (ft_strncmp(form->format, "0", 1) || (form->s_flag != 'o'))
+	if (ft_strncmp(form->help, "0", 1) || (form->s_flag != 'o'))
 	{
-		buf = form->format;
-		form->format = ft_strjoin(hash, buf);
+		buf = form->help;
+		form->help = ft_strjoin(hash, buf);
 		free(buf);
 	}
 	free(hash);
@@ -99,19 +119,19 @@ void		fill_width(t_struc *form)
 	char	*sol;
 
 	_do = (size_t)form->width;
-	_re = ft_strlen(form->format);
+	_re = ft_strlen(form->help);
 	if (_re > _do)
 		return ;
 	_mi = 0;
-	fa = form->format;
+	fa = form->help;
 	sol = (char*)ft_memalloc(_do - _re + 1);
 	while (_mi < _do - _re)
 		sol[_mi++] = (form->zero == '0' ? '0' : ' ');
 	sol[_mi] = '\0';
 	if (form->minus == '-')
-		form->format = ft_strjoin(fa, sol);
+		form->help = ft_strjoin(fa, sol);
 	else
-		form->format = ft_strjoin(sol, fa);
+		form->help = ft_strjoin(sol, fa);
 	free(sol);
 	free(fa);
 }
@@ -122,19 +142,24 @@ void		*choose_signs(t_struc *form)
 	f = form->s_flag;
 	if (form->hash == '#')
 		fill_hash(form);
-	form->ret_nb += ft_strlen(form->format);
-	write(1, form->format, ft_strlen(form->format));
-	free(form->format);
+	fill_width(form);
+	form->ret_nb += ft_strlen(form->help);
+	write(1, form->help, ft_strlen(form->help));
+	free(form->help);
 	return (0);
 }
 
 t_struc		*ft_bases(t_struc *form, int base)
 {
 	intmax_t	val;
-	char *format;
+
 	val = do_unsign_nb(form);
-	format = ft_lit_base (val, base);
-	form->format = format;
+	if (val == 0)
+	{
+		form->ret_nb += write(1, "0", 1);
+		return (0);
+	}
+	form->help = ft_lit_base (val, base, form);
 	choose_signs(form);
 	return (form);
 }

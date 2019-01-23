@@ -25,7 +25,7 @@ int	main(void)
 	//ft_printf("%d\n", 1);
 		
 	// ft_printf("%5c", 'f');
-	y = ft_printf("%#x", 42);
+	y = ft_printf("%#X", -42);
 	//ft_printf("% d\n", -42);
 
 
@@ -70,7 +70,7 @@ int	main(void)
 	//printf("or: %-2c\n", 'Fcuk');
 	int i;
 	//i = printf("my: %c\n %c\n" , '3', '4');
-	i = printf("%#x", 42);
+	i = printf("%#X", -42);
 	//printf("% d\n", -42);
 	//printf("%5c", 'f');
 //	i = printf("my: %+d %+d\n%-5d\n" , -3384747, 4, 42);
