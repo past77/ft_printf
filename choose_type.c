@@ -27,7 +27,7 @@ t_struc	*choose_type(t_struc *form)
 		ft_bases(form, 16);
 	else if (form->s_flag == 'o')
 		ft_bases(form, 8);
-	else if (form->s_flag == 'b')
-		ft_bases(form, 2);
+	else if (form->s_flag == 'u')
+		ft_bases(form, 10);
 	return(form); 
 }

@@ -99,6 +99,7 @@ void		*choose_signs(t_struc *form);
 
 void		fill_hash(t_struc *form);
 void		fill_width(t_struc *form);
+char		*ignore_zero(t_struc *form, size_t d);
 
 
 
