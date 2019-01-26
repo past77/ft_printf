@@ -10,16 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "ft_printf.h"
-
 
 t_struc		*pt_persent(t_struc *form)
 {
-	char c;
-	int length;
-	int space;
-	int zero;
+	char	c;
+	int		length;
+	int		space;
+	int		zero;
 
 	length = form->width;
 	c = '%';
@@ -45,10 +43,10 @@ t_struc		*pt_persent(t_struc *form)
 
 t_struc		*pt_char(t_struc *form)
 {
-	char c;
-	int length;
-	int space;
-	int zero;
+	char	c;
+	int		length;
+	int		space;
+	int		zero;
 
 	length = form->width;
 	c = va_arg(form->ap, int);
@@ -72,9 +70,10 @@ t_struc		*pt_char(t_struc *form)
 	return (form);
 }
 
-void	*pt_width_c(t_struc *form, char c, int sign)
+void		*pt_width_c(t_struc *form, char c, int sign)
 {
-	char *string;
+	char	*string;
+
 		if (form->width == 0)
 		{
 			write(1, &c, 1);
@@ -94,4 +93,5 @@ void	*pt_width_c(t_struc *form, char c, int sign)
 		free(string);
 	}
 	return(0);
-} 	
+}
+

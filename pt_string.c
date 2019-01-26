@@ -14,8 +14,8 @@
 
 char		*ft_strndup(const char *str, size_t i)
 {
-	char *str1;
-	size_t n;
+	char	*str1;
+	size_t	n;
 
 	n = 0;
 	if (!(str1 = (char *)malloc(sizeof(*str1) * (i + 1))))
@@ -28,7 +28,7 @@ char		*ft_strndup(const char *str, size_t i)
 	str1[n] = '\0';
 	return (str1);
 }
-char	*ft_strdup(const char *src)
+char		*ft_strdup(const char *src)
 {
 	int		i;
 	int		j;
@@ -71,14 +71,14 @@ return (form);
 
 t_struc		*pt_string(t_struc *form)
 {
-	char *str;
-	
+	char	*str;
+
 	str = va_arg(form->ap, char *);
 	ft_separete_str(form, str);
 return (form);
 }
 
-void	pr_str(t_struc *form, char cha, int i)
+void		pr_str(t_struc *form, char cha, int i)
 {
 	char	*s;
 

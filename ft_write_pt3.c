@@ -12,7 +12,6 @@
 
 #include "ft_printf.h"
 
-
 void	*ft_write_width(t_struc *form, intmax_t num)
 {
 	char *string;
@@ -58,7 +57,7 @@ void	*ft_write_pluswidth(t_struc *form, intmax_t num)
 		ft_write_dig_pl(form, num);
 	return(0);
 }
-void	*ft_write_owidth(t_struc *form, intmax_t num) // write_width
+void	*ft_write_owidth(t_struc *form, intmax_t num)
 {
 	char *string;
 	int i;

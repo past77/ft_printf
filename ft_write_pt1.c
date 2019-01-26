@@ -10,10 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "ft_printf.h"
 
-void	ft_write_u(t_struc *form, intmax_t num)
+void				ft_write_u(t_struc *form, intmax_t num)
 {
 	if (num < 0)
 		num *= -1;
@@ -22,9 +21,8 @@ void	ft_write_u(t_struc *form, intmax_t num)
 	form->ret_nb += ft_putchar((num % 10) + '0');
 }
 
-void	ft_write_dig(t_struc *form, intmax_t num)
+void				ft_write_dig(t_struc *form, intmax_t num)
 {
-
 	if (num < 0)
 	{
 		form->ret_nb += ft_putchar('-');
@@ -35,7 +33,7 @@ void	ft_write_dig(t_struc *form, intmax_t num)
 	form->ret_nb += ft_putchar((num % 10) + '0');
 }
 
-void	ft_write_dig_pl(t_struc *form, intmax_t num)
+void				ft_write_dig_pl(t_struc *form, intmax_t num)
 {
 	if (num >= 0)
 		form->ret_nb += ft_putchar('+');
@@ -48,19 +46,8 @@ void	ft_write_dig_pl(t_struc *form, intmax_t num)
 		ft_write_dig(form, num / 10);
 	form->ret_nb += ft_putchar((num % 10) + '0');
 }
-/*
-void	*ft_memalloc(size_t size)
-{
-	char	*mal;
 
-	mal = malloc(size);
-	if (mal == NULL)
-		return (NULL);
-	ft_bzero(mal, size);
-	return (mal);
-}
-*/
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int					ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	int				i;
 	unsigned char	*s3;

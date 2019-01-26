@@ -13,15 +13,14 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 # include <stdarg.h>
-//# include "libft.h"
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
 # include <stdint.h> 
- 
+
 typedef struct	s_struc
 {
-	char 	*help;
+	char	*help;
 	va_list	ap;
 	size_t	i;
 	char	*sign;
@@ -48,7 +47,6 @@ typedef struct	s_struc
 }				t_struc;
 
 int			ft_printf(const char *format, ...);
-//int			ft_specificator(va_list *ap, char *c);
 
 t_struc		*ft_init_li(t_struc *form);
 t_struc		parse_a(t_struc *form);
@@ -99,7 +97,14 @@ void		*choose_signs(t_struc *form);
 
 void		fill_hash(t_struc *form);
 void		fill_width(t_struc *form);
+void			fill_zero(t_struc *form);
+
 char		*ignore_zero(t_struc *form, size_t d);
+uintmax_t		do_unsign_nb(t_struc *form);
+t_struc		*parse_exclusion(t_struc *form, uintmax_t val);
+
+char		*ft_ptoa(unsigned long n);
+int			pt_pointer(t_struc *form);
 
 
 
@@ -117,10 +122,10 @@ void		*ft_memalloc(size_t size);
 char		*ft_strndup(const char *str, size_t i);
 void		ft_putstr(const char *str);
 char		*ft_strjoin(char const *s1, char const *s2);
-char	*ft_strcat(char *s1, const char *s2);
-char	*ft_strcpy(char *dst, const char *src);
-char	*ft_strdup(const char *src);
-int	ft_strncmp(const char *s1, const char *s2, size_t n);
+char		*ft_strcat(char *s1, const char *s2);
+char		*ft_strcpy(char *dst, const char *src);
+char		*ft_strdup(const char *src);
+int			ft_strncmp(const char *s1, const char *s2, size_t n);
 
 char		*ft_itoa(intmax_t num);
 //int	ft_putchar_fd(char c);//, int fd);

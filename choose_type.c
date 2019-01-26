@@ -12,9 +12,8 @@
 
 #include "ft_printf.h"
 
-
 t_struc	*choose_type(t_struc *form)
-{ 
+{
 	if (form->s_flag == '%')
 		pt_persent(form);
 	else if (form->s_flag == 'c')
@@ -29,5 +28,7 @@ t_struc	*choose_type(t_struc *form)
 		ft_bases(form, 8);
 	else if (form->s_flag == 'u')
 		ft_bases(form, 10);
-	return(form); 
+	else if (form->s_flag == 'p')
+		pt_pointer(form);
+	return (form);
 }

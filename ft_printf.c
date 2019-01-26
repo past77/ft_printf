@@ -12,11 +12,11 @@
 
 #include "ft_printf.h"
 
-int				ft_printf(const char *format, ...)
+int		ft_printf(const char *format, ...)
 {
 	t_struc		*form;
 	char		*frmt;
-	int 		revenir;
+	int			revenir;
 
 	frmt = (char *)format;
 	form = (t_struc*)malloc(sizeof(t_struc));
@@ -25,12 +25,12 @@ int				ft_printf(const char *format, ...)
 	form->format = frmt;
 	form = ft_init_li(form);
 	va_start(form->ap, format);
-		if (format)
-			form->ret_nb = ft_parse_f(form);
-		revenir = form->ret_nb;
-		form->ret_nb = 0;
-		va_end(form->ap);
-		free(form);
+	if (format)
+		form->ret_nb = ft_parse_f(form);
+	revenir = form->ret_nb;
+	form->ret_nb = 0;
+	va_end(form->ap);
+	free(form);
 	return (revenir);
 }
 
@@ -38,17 +38,16 @@ t_struc	*ft_init_li(t_struc *form)
 {
 	form->len = 0;
 	form->i = 0;
-
 	return(form);
-}		
+}
 
 int		ft_parse_f(t_struc *form)
 {
-	if (ft_strcmp(form->format ,"%") == 0 || form->format == '\0')
+	if (ft_strcmp(form->format, "%") == 0 || form->format == '\0')
 		return (0);
 	while (form->format[form->i] != '\0')
 	{
-		if(form->format[form->i] == '%')
+		if (form->format[form->i] == '%')
 		{
 			ft_init_other(form);
 			ft_separ_fnc(form);
@@ -57,10 +56,10 @@ int		ft_parse_f(t_struc *form)
 		{
 			ft_putchar(form->format[form->i]);
 			form->ret_nb++;
-		} 
-			form->i++;
+		}
+		form->i++;
 	}
-	return(form->ret_nb);
+	return (form->ret_nb);
 }
 
 t_struc	*ft_init_other(t_struc *form)
@@ -83,7 +82,7 @@ t_struc	*ft_init_other(t_struc *form)
 	form->width = 0;
 	return (form);
 }
-int ft_separ_fnc(t_struc *form)
+int		ft_separ_fnc(t_struc *form)
 {
 	form->i++;
 	p_converse(form);
@@ -92,5 +91,5 @@ int ft_separ_fnc(t_struc *form)
 	p_len(form);
 	p_specifer(form);
 	choose_type(form);
-	return (form->ret_nb); //!!!!!!!!!!!!!!!!!!!
+	return (form->ret_nb);
 }

@@ -25,9 +25,10 @@ int	main(void)
 	//ft_printf("%d\n", 1);
 		
 	// ft_printf("%5c", 'f');
-	//y = ft_printf("%p", -42);
+
+	y = ft_printf("%p  %p", 42, 42);
 	//y = ft_printf("%#6o", 2500);
-	y = ft_printf("%-.2s is a string", "this");   
+	//y = ft_printf("%x", 0);
 
 
 	/*
@@ -69,9 +70,11 @@ int	main(void)
 	//printf("%%\n");
 	//printf("%s\n", "d");
 	//printf("or: %-2c\n", 'Fcuk');
+	char *f = "9d";
 	int i;
+
 	//i = printf("my: %c\n %c\n" , '3', '4');
-	i = printf("%-.2s is a string", "this");
+	i = printf("%p, %p", 42, 42);
 	//printf("% d\n", -42);
 	//printf("%5c", 'f');
 //	i = printf("my: %+d %+d\n%-5d\n" , -3384747, 4, 42);
