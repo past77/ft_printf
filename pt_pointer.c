@@ -16,16 +16,32 @@ int				pt_pointer(t_struc *form)
 {
 	uintmax_t	val;
 	char		*p;
+	int			i;
 
-	ft_putstr("0x");
-	form->ret_nb += 2;
+	i = 0;
 	val = (unsigned long)(va_arg(form->ap, unsigned long int));
+	if (form->minus != '-')
+		ft_putstr("0x");
+	form->ret_nb += 2;
 	p = ft_ptoa(val);
-	form->ret_nb += write(1, p, ft_strlen(p));
-	free(p);
+	if (form->minus == '-')
+		i = 1;
+	if (form->press == 0 && val == 0)
+		*p = '\0';
+	if (form->zero == '0' && form->press == -1 && form->minus != '-')
+	{
+		form->press = form->wigth - 2;
+		form->wigth = 0;
+	}
+	pt_point(form, p, i);
+	//form->ret_nb += write(1, p, ft_strlen(p));
+	//free(p);
 	return (form->ret_nb);
 }
-
+t_struc			pt_point(t_struc *form, char *p, int i)
+{
+	if
+}
 static int		convert(int num)
 {
 	if (0 <= num && 9 >= num)

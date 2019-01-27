@@ -48,7 +48,7 @@ void			*choose_signs(t_struc *form)
 
 t_struc			*parse_exclusion(t_struc *form, uintmax_t val)
 {
-	if (val == 0 && form->hash == '#' && form->s_flag == 'o')
+	if (val == 0 && form->hash == '#' && form->s_flag == 'o' )
 	{
 		form->ret_nb += write(1, "0", 1);
 		return (0);
@@ -66,7 +66,10 @@ t_struc			*parse_exclusion(t_struc *form, uintmax_t val)
 	}
 	if (val == 0)
 	{
-		form->ret_nb += write(1, "0", 1);
+		form->help = ft_strdup("0");
+		fill_width(form);
+		form->ret_nb += ft_strlen(form->help);
+		write(1, form->help, ft_strlen(form->help));
 		return (0);
 	}
 	return (form);
