@@ -30,18 +30,22 @@ int				pt_pointer(t_struc *form)
 		*p = '\0';
 	if (form->zero == '0' && form->press == -1 && form->minus != '-')
 	{
-		form->press = form->wigth - 2;
-		form->wigth = 0;
+		form->press = form->width - 2;
+		form->width = 0;
 	}
-	pt_point(form, p, i);
+	
+	//pt_point(form, p, i);
 	//form->ret_nb += write(1, p, ft_strlen(p));
-	//free(p);
+	free(p);
 	return (form->ret_nb);
 }
+/*
 t_struc			pt_point(t_struc *form, char *p, int i)
 {
-	if
-}
+	if (i == 0)
+		displ(form, ' ', form->width - ft_strlen(p));
+*/
+
 static int		convert(int num)
 {
 	if (0 <= num && 9 >= num)

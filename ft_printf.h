@@ -83,9 +83,11 @@ void		*ft_ret(t_struc *form, intmax_t num);
 void		*ft_prespl(t_struc *form, intmax_t num, int i, int j);
 void		*ft_presm(t_struc *form,intmax_t num, int i, int j);
 void		*ft_compress(t_struc *form, intmax_t num, int i);
-void		*ft_lesspres(t_struc *form, intmax_t num, int i, int j, char *string);
+void		*ft_lesspres(t_struc *form, intmax_t num);
 t_struc		*work_w_press(t_struc *form, intmax_t num);
 void		*ft_owidth_p(t_struc *form, intmax_t num);
+
+void 	*zero(t_struc *form, intmax_t num);
 //string
 t_struc		*pt_string(t_struc *form);
 void		pr_str(t_struc *form, char cha, int i);
@@ -126,8 +128,9 @@ char		*ft_strcat(char *s1, const char *s2);
 char		*ft_strcpy(char *dst, const char *src);
 char		*ft_strdup(const char *src);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
+char	*ft_itoa(int n);
 
-char		*ft_itoa(intmax_t num);
+//char		*ft_itoa(intmax_t num);
 //int	ft_putchar_fd(char c);//, int fd);
 
 

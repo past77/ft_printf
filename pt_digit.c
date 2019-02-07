@@ -60,7 +60,6 @@ t_struc		*choose_index(t_struc *form, intmax_t num)
 
 t_struc		*work_w_press(t_struc *form, intmax_t num)
 {
-
 	if ((form->press == 0 && form->width == 0) || (form->press == 0 && form->width != 0))
 		ft_ret(form, num);
 	else if(form->width >= 0)
@@ -71,7 +70,7 @@ t_struc		*work_w_press(t_struc *form, intmax_t num)
 t_struc		*pt_digit(t_struc *form)
 {
 	intmax_t num;
-	
+
 	num = do_number(form);
 	if (form->press >= 0)
 		work_w_press(form, num);
