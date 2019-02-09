@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+/Users/ppolozhe/Desktop/MY_PRINTF/fills.c
+ft_printf.h
+/Users/ppolozhe/Desktop/MY_PRINTF/ft_printf.h
+
 /Users/ppolozhe/Desktop/MY_PRINTF/ft_printf.h
 stdarg.h
 -
@@ -19,6 +23,18 @@ stdint.h
 -
 
 /Users/ppolozhe/Desktop/MY_PRINTF/lib_fn1.c
+ft_printf.h
+/Users/ppolozhe/Desktop/MY_PRINTF/ft_printf.h
+
+/Users/ppolozhe/Desktop/MY_PRINTF/min.c
+ft_printf.h
+/Users/ppolozhe/Desktop/MY_PRINTF/ft_printf.h
+
+/Users/ppolozhe/Desktop/MY_PRINTF/write_main_press.c
+ft_printf.h
+/Users/ppolozhe/Desktop/MY_PRINTF/ft_printf.h
+
+/Users/ppolozhe/Desktop/MY_PRINTF/write_press.c
 ft_printf.h
 /Users/ppolozhe/Desktop/MY_PRINTF/ft_printf.h
 

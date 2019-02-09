@@ -107,6 +107,8 @@ t_struc		*parse_exclusion(t_struc *form, uintmax_t val);
 
 char		*ft_ptoa(unsigned long n);
 int			pt_pointer(t_struc *form);
+void		fill_uni(t_struc *form, char a, int i);
+t_struc		*prnt_p(t_struc *form, char *p, int i);
 
 
 

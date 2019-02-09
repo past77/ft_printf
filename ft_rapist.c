@@ -42,7 +42,7 @@ char			*ft_lit_base(intmax_t num, int base, t_struc *form)
 		return (NULL);
 	if (base > 16 || base < 2)
 		return (NULL);
-	if (form->s_flag == 'x')
+	if (form->s_flag == 'x' || form->s_flag == 'p')
 		rape_digit(num, str, &i, base);
 	else
 		rape_ldigit(num, str, &i, base);

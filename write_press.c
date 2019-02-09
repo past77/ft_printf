@@ -45,8 +45,7 @@ void *ft_lesspres(t_struc *form, intmax_t num)
 	int		u;
 	char		*fa;
 	char		*sol;
-	//char		*string;
-	//int n;
+
 	if (num < 0)
 		i = ((size_t)form->width - 1);
 	else
@@ -58,17 +57,13 @@ void *ft_lesspres(t_struc *form, intmax_t num)
 	while (j < i - len_of_nbr(num))
 		sol[j++] = (form->zero == '0' ? '0' : ' ');
 	sol[j] = '\0';
-	//n = printf("SOL |%s|\n",sol );
-	//printf("N%d", n);
-	if (form->minus == '-' || form->width - form->press <= len_of_nbr(num))
-	{
+	if (form->minus == '-' || form->press >= (int)len_of_nbr(num))
 		zero(form, num);
-		if (form->zero == '0')
-			sol = ignore_zero(form, i);
-	}
 	else 
-		form->help = ft_strjoin(sol, fa);
-
+		{
+			form->help = ft_strjoin(sol, fa);
+			form->ret_nb += write(1, form->help, ft_strlen(form->help));
+		}
 	free(sol);
 	free(fa);
 	return (0);
@@ -76,7 +71,6 @@ void *ft_lesspres(t_struc *form, intmax_t num)
 
 void 	*zero(t_struc *form, intmax_t num)
 {
-	//printf("%s\n", "tolyan kalyan");
 	int j;
 	int i = 0;
 	i = form->width - form->press;
@@ -108,32 +102,6 @@ void 	*zero(t_struc *form, intmax_t num)
 		ft_write_dig_pl(form, num);
 	return (0);
 }
-/*
-	char *spaces;
-	
-	form->ret_nb += i + form->press - j;
-	if ((form->width - j) > 0)
-	{
-		if (!(string = ft_strnew(form->press - j)) || !(spaces = ft_strnew(i - 1)))
-			exit (-1);
-		ft_memset(spaces, ' ',  i);
-		if(num < 0)
-		{
-			ft_memset(spaces, ' ',  i - 1);
-			write(1, spaces, i - 1);
-			write(1, "-", 1);
-		}
-		else
-			write(1, spaces, i);
-		ft_memset(string, '0', form->press - j);
-		write(1, string, form->press - j);
-		ft_write_u(form, num);
-		free(string);
-		free(spaces);
-	}
-	else
-		ft_write_dig_pl(form, num);
-	return (0);*/
 
 void		*ft_presm(t_struc *form,intmax_t num, int i, int j)
 {
@@ -195,7 +163,6 @@ void	*ft_compress(t_struc *form, intmax_t num, int i)
 {
 	char *string;
 	char *str;
-	//staic char pr[];
 
 	if (num < 0) //////  pr = (num < 0) ? '-' : '+';
 		write(1, "-", 1);// write (1, &pr, 1);

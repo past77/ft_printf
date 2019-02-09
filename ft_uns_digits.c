@@ -53,7 +53,7 @@ t_struc			*parse_exclusion(t_struc *form, uintmax_t val)
 		form->ret_nb += write(1, "0", 1);
 		return (0);
 	}
-	if (form->press == 0)
+	if (form->press == 0 && form->s_flag != 'p')
 	{
 		if (form->width > 0)
 		{
@@ -64,7 +64,20 @@ t_struc			*parse_exclusion(t_struc *form, uintmax_t val)
 		}
 		return (0);
 	}
-	if (val == 0)
+	if (val == 0 && form->hash == '#' && form->press > 0 && form->s_flag != 'p')
+	{
+		while(form->press != 1)
+		{
+			form->ret_nb += write(1, "0", 1);
+				form->press--;
+		}
+	}
+	if ((form->press == form->width || (form->press > (int)len_of_nbr(val) &&  val == 0)) && form->hash != '#')
+		{
+			ft_owidth_p(form, val);
+			return (0);
+		}
+	if (val == 0 && form->s_flag != 'p')
 	{
 		form->help = ft_strdup("0");
 		fill_width(form);

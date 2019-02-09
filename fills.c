@@ -18,22 +18,22 @@ void			fill_hash(t_struc *form)
 	static char	*hash = NULL;
 	int			hs;
 	int			lhs;
-	int			width;
 
-	width = form->width;
-	hs = (form->s_flag == 'x') ? 1 : 0;
+	hs = (form->s_flag == 'x' || form->s_flag == 'p') ? 1 : 0;
 	lhs = (form->s_flag == 'X') ? 1 : 0;
-	if (form->s_flag == 'x' || form->s_flag == 'o')
+	if (form->s_flag == 'x' || form->s_flag == 'o' || form->s_flag == 'p')
 		hash = hs ? ft_strdup("0x") : ft_strdup("0");
 	else if (form->s_flag == 'X')
 		hash = lhs ? ft_strdup("0X") : ft_strdup("0");
 	if (form->zero == '0')
 	{
-		form->width = (hs == 1 || lhs == 1) ? (width - 2) : (width - 1);
+		form->width = (hs == 1 || lhs == 1) ? (form->width - 2) : (form->width - 1);
 		fill_width(form);
 	}
 	if (ft_strncmp(form->help, "0", 1) || (form->s_flag != 'o'))
 	{
+		if (form->press == 0i && form->s_flag == 'p')
+			form->help =ft_strdup("");
 		buf = form->help;
 		form->help = ft_strjoin(hash, buf);
 		free(buf);
@@ -96,6 +96,7 @@ char			*ignore_zero(t_struc *form, size_t d)
 {
 	char		*sol;
 	size_t		mi;
+
 
 	mi = 0;
 	sol = (char*)ft_memalloc(d - ft_strlen(form->help) + 1);

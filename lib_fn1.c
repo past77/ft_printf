@@ -14,16 +14,7 @@
 
 void		ft_putstr(const char *str)
 {
-	int i;
-
-	if (!str)
-		return ;
-	i = 0;
-	while (str[i] != '\0')
-	{
-		ft_putchar(str[i]);
-		i++;
-	}
+	write(1, str, ft_strlen(str));
 }
 
 int		ft_putchar (char c)
@@ -43,11 +34,11 @@ int		ft_isdigit(int c)
 
 size_t	ft_strlen(const char *str)
 {
-	int i;
+	size_t i;
 
 	i = 0;
-	while (str && str[i] != '\0')
-		i++;
+        while (str && str[i] != '\0')
+            i++;
 	return (i);
 }
 

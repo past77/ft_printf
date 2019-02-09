@@ -22,13 +22,10 @@ void	*pt_precision(t_struc *form, intmax_t num)
 	i = 0;
 	string = NULL;
 	j = len_of_nbr(num);
-	if (form->press > form->width || form->width == 0)
+	if (form->press > form->width || form->width == 0 || (form->press == form->width && form->press > (int)len_of_nbr(num)))
 		ft_owidth_p(form, num);
 	else if (form->press < form->width && form->minus == '\0' && form->plus != '+')
-	{
 		ft_lesspres(form, num);
-		form->ret_nb += write(1, form->help, ft_strlen(form->help));
-	}
 	else if (form->plus == '+' && form->minus == '-')
 	{
 		ft_compress(form, num, j);
@@ -39,11 +36,6 @@ void	*pt_precision(t_struc *form, intmax_t num)
 		ft_prespl(form,num, i, j);
 	else if (form->press == form->width)
 		ft_write_dig(form, num);
-		//{
-		//	printf("%s\n", "try4");	
-		//	fill_width(form);
-			//printf("%s\n", "try4");	
-		//}
 	return (0);
 }
 

@@ -45,10 +45,30 @@ int	main(void)
   ft_printf("%s%s\n", "test", "test");
   ft_printf("%s%s%s\n", "test", "test", "test");
   ft_printf("%C\n", 15000);
+ft_printf("%10.5d", 4242);
 
+ ft_printf("%03.2d", 0);
 */
+	//ft_printf("%03.2d", -1);
+//ft_printf("M %15.5d\n", 4242);
+//printf("O %15.5d\n", 4242);
+	/*printf("or: %c\n", 0);
+printf("%s\n", "................................\n");
+	ft_printf("my: %c\n", 0);
+	printf("%s\n",".............................\n" );*/
+	//ft_printf("MY: %p\n", NULL);
+	//printf("MY: %p\n", NULL);
+	int i = ft_printf("|%.0p|\t\t|%6p|\t\t|%6.p|\t|%10.6p|", NULL,NULL,NULL,NULL);
+	 printf("\n" );
 
-  int nmb = 42;
+printf("%s\n","========================================================================" );
+	int j =  printf("|%.0p|\t\t|%6p|\t\t|%6.p|\t|%10.6p|", NULL,NULL,NULL,NULL);
+
+	printf("M: %d  O: %d\n",i, j );
+	 //printf("%.2u", 0);
+	 
+/*
+	 int nmb = 4245;
 		#define CNV "i"
 		printf("\n   |"CNV"|:\n");
 		//printf("|%1.1"CNV"|\t\t|%5.1"CNV"|\t\t|%5.3"CNV"|\t\t|%1.5"CNV"|\t",nmb, nmb, nmb, nmb);
@@ -59,7 +79,7 @@ int	main(void)
 		//ft_printf("|%3.1d|\t\t|%5.1i|\t\t|%5.3i|\t\t|%1.5i|\t",42, 42, 42, 42);
 	// int x = 10;
 	// int y;
-
+*/
 	// ft_printf("............................................................MY PRINTF:\n");
 	//ft_printf("\n");
 	//ft_printf("%%%kfcuk\n");
