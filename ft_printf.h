@@ -30,6 +30,7 @@ typedef struct	s_struc
 	char	plus;
 	char	hash;
 	int		width;
+	int 	L;
 	int		l;
 	int		ll;
 	int		h;

@@ -57,16 +57,18 @@ printf("%s\n", "................................\n");
 	ft_printf("my: %c\n", 0);
 	printf("%s\n",".............................\n" );*/
 	//ft_printf("MY: %p\n", NULL);
-	//printf("MY: %p\n", NULL);
+
+ft_printf("%b", 15);
+/*	//printf("MY: %p\n", NULL);
 	int i = ft_printf("|%.0p|\t\t|%6p|\t\t|%6.p|\t|%10.6p|", NULL,NULL,NULL,NULL);
 	 printf("\n" );
 
 printf("%s\n","========================================================================" );
 	int j =  printf("|%.0p|\t\t|%6p|\t\t|%6.p|\t|%10.6p|", NULL,NULL,NULL,NULL);
-
+*
 	printf("M: %d  O: %d\n",i, j );
 	 //printf("%.2u", 0);
-	 
+*/	 
 /*
 	 int nmb = 4245;
 		#define CNV "i"

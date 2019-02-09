@@ -65,6 +65,8 @@ t_struc			*p_len(t_struc *form)
 				form->ll = 1;
 			else if (form->format[form->i] == 'l' && form->format[form->i + 1] != 'l')
 				form->l = 1;
+			else if (form->format[form->i] == 'L' && form->format[form->i + 1] != 'L')
+				form->L = 1;
 			else if (form->format[form->i] == 'h' && form->format[form->i + 1] == 'h')
 				form->hh = 1;
 			else if (form->format[form->i] == 'h' && form->format[form->i + 1] != 'h')
