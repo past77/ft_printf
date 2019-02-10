@@ -12,17 +12,16 @@
 
 #include "ft_printf.h"
 
-void		ft_putstr(const char *str)
+void	ft_putstr(const char *str)
 {
 	write(1, str, ft_strlen(str));
 }
 
-int		ft_putchar (char c)
+int		ft_putchar(char c)
 {
 	write(1, &c, 1);
 	return (1);
 }
-
 
 int		ft_isdigit(int c)
 {
@@ -37,8 +36,8 @@ size_t	ft_strlen(const char *str)
 	size_t i;
 
 	i = 0;
-        while (str && str[i] != '\0')
-            i++;
+	while (str && str[i] != '\0')
+		i++;
 	return (i);
 }
 

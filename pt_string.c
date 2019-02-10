@@ -67,7 +67,7 @@ t_struc		*ft_separete_str(t_struc *form, char *str)
 	if (form->minus == '-')
 		pr_str(form, ' ', form->width - ft_strlen(str));
 	free(str);
-return (form);
+	return (form);
 }
 
 t_struc		*pt_string(t_struc *form)
@@ -76,7 +76,7 @@ t_struc		*pt_string(t_struc *form)
 
 	str = va_arg(form->ap, char *);
 	ft_separete_str(form, str);
-return (form);
+	return (form);
 }
 
 void		pr_str(t_struc *form, char cha, int i)

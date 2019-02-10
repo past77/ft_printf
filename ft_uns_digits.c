@@ -48,21 +48,24 @@ void			*choose_signs(t_struc *form)
 	return (0);
 }
 
-t_struc			*excl(t_struc *form, uintmax_t val)
+t_struc			*excl(t_struc *form, uintmax_t val, int i)
 {
-	if (val == 0 && form->hash == '#' && form->press > 0 && form->s_flag != 'p')
+	int p;
+
+	p = form->press;
+	if (val == 0 && form->hash == '#' && p > 0 && form->s_flag != 'p')
 	{
-		while(form->press != 1)
+		while (form->press != 1)
 		{
 			form->ret_nb += write(1, "0", 1);
-				form->press--;
+			form->press--;
 		}
 	}
-	if ((form->press == form->width || (form->press > (int)len_of_nbr(val) &&  val == 0)) && form->hash != '#')
-		{
-			ft_owidth_p(form, val);
-			return (0);
-		}
+	if ((p == form->width || (p > i && val == 0)) && form->hash != '#')
+	{
+		ft_owidth_p(form, val);
+		return (0);
+	}
 	if (val == 0 && form->s_flag != 'p')
 	{
 		form->help = ft_strdup("0");
@@ -76,7 +79,10 @@ t_struc			*excl(t_struc *form, uintmax_t val)
 
 t_struc			*parse_exclusion(t_struc *form, uintmax_t val)
 {
-	if (val == 0 && form->hash == '#' && form->s_flag == 'o' )
+	int i;
+
+	i = (int)len_of_nbr(val);
+	if (val == 0 && form->hash == '#' && form->s_flag == 'o')
 	{
 		form->ret_nb += write(1, "0", 1);
 		return (0);
@@ -92,32 +98,10 @@ t_struc			*parse_exclusion(t_struc *form, uintmax_t val)
 		}
 		return (0);
 	}
-	if(excl(form, val) == NULL)
+	if (excl(form, val, i) == NULL)
 		return (0);
 	else
-	/*
-	if (val == 0 && form->hash == '#' && form->press > 0 && form->s_flag != 'p')
-	{
-		while(form->press != 1)
-		{
-			form->ret_nb += write(1, "0", 1);
-				form->press--;
-		}
-	}
-	if ((form->press == form->width || (form->press > (int)len_of_nbr(val) &&  val == 0)) && form->hash != '#')
-		{
-			ft_owidth_p(form, val);
-			return (0);
-		}
-	if (val == 0 && form->s_flag != 'p')
-	{
-		form->help = ft_strdup("0");
-		fill_width(form);
-		form->ret_nb += ft_strlen(form->help);
-		write(1, form->help, ft_strlen(form->help));
-		return (0);
-	}*/
-	return (form);
+		return (form);
 }
 
 t_struc			*ft_bases(t_struc *form, int base)

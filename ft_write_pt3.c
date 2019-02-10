@@ -12,10 +12,10 @@
 
 #include "ft_printf.h"
 
-void	*ft_write_width(t_struc *form, intmax_t num)
+void		*ft_write_width(t_struc *form, intmax_t num)
 {
-	char *string;
-	int i;
+	char	*string;
+	int		i;
 
 	i = len_of_nbr(num);
 	if (num < 0)
@@ -24,7 +24,7 @@ void	*ft_write_width(t_struc *form, intmax_t num)
 	{
 		form->ret_nb += form->width - i;
 		if ((string = ft_strnew(form->width - i)) == NULL)
-			exit (-1);
+			exit(-1);
 		ft_memset(string, ' ', form->width - i);
 		write(1, string, form->width - i);
 		ft_write_dig(form, num);
@@ -32,13 +32,13 @@ void	*ft_write_width(t_struc *form, intmax_t num)
 	}
 	else
 		ft_write_dig(form, num);
-	return(0);
+	return (0);
 }
 
-void	*ft_write_pluswidth(t_struc *form, intmax_t num)
+void		*ft_write_pluswidth(t_struc *form, intmax_t num)
 {
-	char *string;
-	int i;
+	char	*string;
+	int		i;
 
 	i = len_of_nbr(num);
 	if (num < 0 || num > 0)
@@ -47,7 +47,7 @@ void	*ft_write_pluswidth(t_struc *form, intmax_t num)
 	{
 		form->ret_nb += form->width - i;
 		if ((string = ft_strnew(form->width - i)) == NULL)
-			exit (-1);
+			exit(-1);
 		ft_memset(string, ' ', form->width - i);
 		write(1, string, form->width - i);
 		ft_write_dig_pl(form, num);
@@ -55,22 +55,23 @@ void	*ft_write_pluswidth(t_struc *form, intmax_t num)
 	}
 	else
 		ft_write_dig_pl(form, num);
-	return(0);
+	return (0);
 }
-void	*ft_write_owidth(t_struc *form, intmax_t num)
+
+void		*ft_write_owidth(t_struc *form, intmax_t num)
 {
-	char *string;
-	int i;
+	char	*string;
+	int		i;
 
 	i = len_of_nbr(num);
-	if  (num < 0)
+	if (num < 0)
 		i++;
 	if ((form->width - i) > 0)
 	{
 		form->ret_nb += form->width - i;
 		if ((string = ft_strnew(form->width - i)) == NULL)
-			exit (-1);
-		if(num < 0)
+			exit(-1);
+		if (num < 0)
 			form->ret_nb += write(1, "-", 1);
 		ft_memset(string, '0', form->width - i);
 		write(1, string, form->width - i);
@@ -79,12 +80,13 @@ void	*ft_write_owidth(t_struc *form, intmax_t num)
 	}
 	else
 		ft_write_dig_pl(form, num);
-	return(0);
-
+	return (0);
 }
-void	*ft_write_other(t_struc *form, intmax_t num)
+
+void		*ft_write_other(t_struc *form, intmax_t num)
 {
-	char *max;
+	char	*max;
+
 	if (num == LONG_MIN)
 	{
 		max = ft_strdup("-9223372036854775808");
@@ -92,8 +94,8 @@ void	*ft_write_other(t_struc *form, intmax_t num)
 		return (0);
 	}
 	if (form->zero == '0')
-		 ft_write_dig(form, num);
-	else if(form->space == ' ')
+		ft_write_dig(form, num);
+	else if (form->space == ' ')
 	{
 		if (num < 0)
 			form->ret_nb += write(1, "-", 1);
@@ -103,6 +105,5 @@ void	*ft_write_other(t_struc *form, intmax_t num)
 	}
 	else
 		ft_write_dig(form, num);
-	return(0);
+	return (0);
 }
-

@@ -17,9 +17,9 @@ t_struc		*p_converse(t_struc *form)
 	int j;
 
 	j = 0;
-	while(form->sign[j] != '\0')
+	while (form->sign[j] != '\0')
 	{
-		while(form->sign[j] == form->format[form->i])
+		while (form->sign[j] == form->format[form->i])
 		{
 			if (form->format[form->i] == '+' && form->i++)
 				form->plus = '+';
@@ -55,9 +55,9 @@ t_struc	*p_specifer(t_struc *form)
 t_struc			*p_len(t_struc *form, int j, char *forma)
 {
 	forma = form->format;
-	while(form->lens[j] != '\0')
+	while (form->lens[j] != '\0')
 	{
-		while(form->lens[j] == form->format[form->i])
+		while (form->lens[j] == form->format[form->i])
 		{
 			if (forma[form->i] == 'l' && forma[form->i + 1] == 'l')
 				form->ll = 1;

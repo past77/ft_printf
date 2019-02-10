@@ -12,11 +12,11 @@
 
 #include "ft_printf.h"
 
-int		ft_printf(const char *format, ...)
+int			ft_printf(const char *format, ...)
 {
-	t_struc		*form;
-	char		*frmt;
-	int			revenir;
+	t_struc	*form;
+	char	*frmt;
+	int		revenir;
 
 	frmt = (char *)format;
 	form = (t_struc*)malloc(sizeof(t_struc));
@@ -34,14 +34,14 @@ int		ft_printf(const char *format, ...)
 	return (revenir);
 }
 
-t_struc	*ft_init_li(t_struc *form)
+t_struc		*ft_init_li(t_struc *form)
 {
 	form->len = 0;
 	form->i = 0;
-	return(form);
+	return (form);
 }
 
-int		ft_parse_f(t_struc *form)
+int			ft_parse_f(t_struc *form)
 {
 	if (ft_strcmp(form->format, "%") == 0 || form->format == '\0')
 		return (0);
@@ -62,7 +62,7 @@ int		ft_parse_f(t_struc *form)
 	return (form->ret_nb);
 }
 
-t_struc	*ft_init_other(t_struc *form)
+t_struc		*ft_init_other(t_struc *form)
 {
 	form->specificators = "idscuobfxpUX%";
 	form->sign = "-+# 0";
@@ -82,10 +82,11 @@ t_struc	*ft_init_other(t_struc *form)
 	form->width = 0;
 	return (form);
 }
-int		ft_separ_fnc(t_struc *form)
+
+int			ft_separ_fnc(t_struc *form)
 {
-	int j;
-	char *forma;
+	int		j;
+	char	*forma;
 
 	forma = NULL;
 	j = 0;

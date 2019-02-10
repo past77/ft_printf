@@ -12,9 +12,9 @@
 
 #include "ft_printf.h"
 
-static intmax_t		do_number(t_struc *form)
+static intmax_t	do_number(t_struc *form)
 {
-	intmax_t num;
+	intmax_t	num;
 
 	if (form->hh == 1)
 		num = (char)va_arg(form->ap, int);
@@ -33,14 +33,14 @@ static intmax_t		do_number(t_struc *form)
 	return (num);
 }
 
-t_struc		*choose_index(t_struc *form, intmax_t num)
+t_struc			*choose_index(t_struc *form, intmax_t num)
 {
-	int wi;
+	int			wi;
 
 	wi = form->width;
 	if (form->plus == '+' && wi == 0 && form->minus != '-')
 		ft_write_dig_pl(form, num);
-	else if (form->minus == '-' && wi > 0 && form->plus != '+' && form->space != ' ')
+	else if (form->minus == '-' && wi > 0 && form->plus != '+' && !form->space)
 		ft_write_minus(form, num);
 	else if (form->plus == '+' && form->minus == '-' && wi > 0)
 		ft_write_common(form, num);
@@ -61,26 +61,26 @@ t_struc		*choose_index(t_struc *form, intmax_t num)
 	return (form);
 }
 
-t_struc		*work_w_press(t_struc *form, intmax_t num)
+t_struc			*work_w_press(t_struc *form, intmax_t num)
 {
-	int wi;
+	int			wi;
 
 	wi = form->width;
 	if ((form->press == 0 && wi == 0) || (form->press == 0 && wi != 0))
 		ft_ret(form, num);
-	else if(form->width >= 0)
+	else if (form->width >= 0)
 		pt_precision(form, num);
 	return (form);
 }
 
-t_struc		*pt_digit(t_struc *form)
+t_struc			*pt_digit(t_struc *form)
 {
-	intmax_t num;
+	intmax_t	num;
 
 	num = do_number(form);
 	if (form->press >= 0)
 		work_w_press(form, num);
 	else
 		choose_index(form, num);
-	return(form);
+	return (form);
 }
