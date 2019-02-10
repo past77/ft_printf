@@ -35,23 +35,26 @@ static intmax_t		do_number(t_struc *form)
 
 t_struc		*choose_index(t_struc *form, intmax_t num)
 {
-	if (form->plus == '+' && form->width == 0 && form->minus != '-')
+	int wi;
+
+	wi = form->width;
+	if (form->plus == '+' && wi == 0 && form->minus != '-')
 		ft_write_dig_pl(form, num);
-	else if (form->minus == '-' && form->width > 0 && form->plus != '+' && form->space != ' ')
-		ft_write_minus(form, num); 
-	else if (form->plus == '+' && form->minus == '-' && form->width > 0)
+	else if (form->minus == '-' && wi > 0 && form->plus != '+' && form->space != ' ')
+		ft_write_minus(form, num);
+	else if (form->plus == '+' && form->minus == '-' && wi > 0)
 		ft_write_common(form, num);
-	else if (form->plus == '+' && form->zero == '0' && form->width > 0)
+	else if (form->plus == '+' && form->zero == '0' && wi > 0)
 		ft_write_zero(form, num);
-	else if (form->space == ' ' && form->zero == '0' && form->width > 0 && form->minus != '-')
+	else if (form->space == ' ' && form->zero == '0' && wi > 0 && !form->minus)
 		ft_write_space_zero(form, num);
-	else if (form->space == ' ' && form->minus == '-' && form->width > 0)
+	else if (form->space == ' ' && form->minus == '-' && wi > 0)
 		ft_write_space_minus(form, num);
-	else if (form->width > 0 && form->plus == '+')
+	else if (wi > 0 && form->plus == '+')
 		ft_write_pluswidth(form, num);
-	else if (form->width > 0 && form->zero == '0' && form->plus != '+')
+	else if (wi > 0 && form->zero == '0' && form->plus != '+')
 		ft_write_owidth(form, num);
-	else if (form->width > 0) 
+	else if (form->width > 0)
 		ft_write_width(form, num);
 	else
 		ft_write_other(form, num);
@@ -60,7 +63,10 @@ t_struc		*choose_index(t_struc *form, intmax_t num)
 
 t_struc		*work_w_press(t_struc *form, intmax_t num)
 {
-	if ((form->press == 0 && form->width == 0) || (form->press == 0 && form->width != 0))
+	int wi;
+
+	wi = form->width;
+	if ((form->press == 0 && wi == 0) || (form->press == 0 && wi != 0))
 		ft_ret(form, num);
 	else if(form->width >= 0)
 		pt_precision(form, num);
@@ -78,41 +84,3 @@ t_struc		*pt_digit(t_struc *form)
 		choose_index(form, num);
 	return(form);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

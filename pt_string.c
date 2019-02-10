@@ -23,11 +23,12 @@ char		*ft_strndup(const char *str, size_t i)
 	while (str[n] && i > n)
 	{
 		str1[n] = str[n];
-		n++; 
+		n++;
 	}
 	str1[n] = '\0';
 	return (str1);
 }
+
 char		*ft_strdup(const char *src)
 {
 	int		i;
@@ -91,28 +92,3 @@ void		pr_str(t_struc *form, char cha, int i)
 		free(s);
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -18,6 +18,8 @@ uintmax_t		do_unsign_nb(t_struc *form)
 
 	if (form->hh == 1)
 		num = (unsigned char)va_arg(form->ap, unsigned int);
+	else if (form->s_flag == 'U')
+		num = va_arg(form->ap, unsigned long);
 	else if (form->h == 1)
 		num = (unsigned short)va_arg(form->ap, unsigned int);
 	else if (form->ll == 1)
@@ -46,24 +48,8 @@ void			*choose_signs(t_struc *form)
 	return (0);
 }
 
-t_struc			*parse_exclusion(t_struc *form, uintmax_t val)
+t_struc			*excl(t_struc *form, uintmax_t val)
 {
-	if (val == 0 && form->hash == '#' && form->s_flag == 'o' )
-	{
-		form->ret_nb += write(1, "0", 1);
-		return (0);
-	}
-	if (form->press == 0 && form->s_flag != 'p')
-	{
-		if (form->width > 0)
-		{
-			form->help = ft_strdup("");
-			fill_width(form);
-			form->ret_nb += ft_strlen(form->help);
-			write(1, form->help, ft_strlen(form->help));
-		}
-		return (0);
-	}
 	if (val == 0 && form->hash == '#' && form->press > 0 && form->s_flag != 'p')
 	{
 		while(form->press != 1)
@@ -85,6 +71,52 @@ t_struc			*parse_exclusion(t_struc *form, uintmax_t val)
 		write(1, form->help, ft_strlen(form->help));
 		return (0);
 	}
+	return (form);
+}
+
+t_struc			*parse_exclusion(t_struc *form, uintmax_t val)
+{
+	if (val == 0 && form->hash == '#' && form->s_flag == 'o' )
+	{
+		form->ret_nb += write(1, "0", 1);
+		return (0);
+	}
+	if (form->press == 0 && form->s_flag != 'p')
+	{
+		if (form->width > 0)
+		{
+			form->help = ft_strdup("");
+			fill_width(form);
+			form->ret_nb += ft_strlen(form->help);
+			write(1, form->help, ft_strlen(form->help));
+		}
+		return (0);
+	}
+	if(excl(form, val) == NULL)
+		return (0);
+	else
+	/*
+	if (val == 0 && form->hash == '#' && form->press > 0 && form->s_flag != 'p')
+	{
+		while(form->press != 1)
+		{
+			form->ret_nb += write(1, "0", 1);
+				form->press--;
+		}
+	}
+	if ((form->press == form->width || (form->press > (int)len_of_nbr(val) &&  val == 0)) && form->hash != '#')
+		{
+			ft_owidth_p(form, val);
+			return (0);
+		}
+	if (val == 0 && form->s_flag != 'p')
+	{
+		form->help = ft_strdup("0");
+		fill_width(form);
+		form->ret_nb += ft_strlen(form->help);
+		write(1, form->help, ft_strlen(form->help));
+		return (0);
+	}*/
 	return (form);
 }
 

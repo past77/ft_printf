@@ -64,7 +64,7 @@ int		ft_parse_f(t_struc *form)
 
 t_struc	*ft_init_other(t_struc *form)
 {
-	form->specificators = "idscuobfxpX%";
+	form->specificators = "idscuobfxpUX%";
 	form->sign = "-+# 0";
 	form->lens = "lhzjL";
 	form->index = '\0';
@@ -84,11 +84,16 @@ t_struc	*ft_init_other(t_struc *form)
 }
 int		ft_separ_fnc(t_struc *form)
 {
+	int j;
+	char *forma;
+
+	forma = NULL;
+	j = 0;
 	form->i++;
 	p_converse(form);
 	p_width(form);
 	p_press(form);
-	p_len(form);
+	p_len(form, j, forma);
 	p_specifer(form);
 	choose_type(form);
 	return (form->ret_nb);

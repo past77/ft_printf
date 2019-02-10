@@ -18,11 +18,14 @@ void	*pt_precision(t_struc *form, intmax_t num)
 	int i;
 	int j;
 	char *string;
+	int wi;
 
+
+	wi = form->width;
 	i = 0;
 	string = NULL;
 	j = len_of_nbr(num);
-	if (form->press > form->width || form->width == 0 || (form->press == form->width && form->press > (int)len_of_nbr(num)))
+	if (form->press > wi || wi == 0 || (form->press == wi && form->press > (int)j))
 		ft_owidth_p(form, num);
 	else if (form->press < form->width && form->minus == '\0' && form->plus != '+')
 		ft_lesspres(form, num);

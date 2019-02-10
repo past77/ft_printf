@@ -84,6 +84,13 @@ void	*ft_write_owidth(t_struc *form, intmax_t num)
 }
 void	*ft_write_other(t_struc *form, intmax_t num)
 {
+	char *max;
+	if (num == LONG_MIN)
+	{
+		max = ft_strdup("-9223372036854775808");
+		form->ret_nb += write(1, max, ft_strlen(max));
+		return (0);
+	}
 	if (form->zero == '0')
 		 ft_write_dig(form, num);
 	else if(form->space == ' ')

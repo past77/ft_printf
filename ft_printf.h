@@ -16,7 +16,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>
-# include <stdint.h> 
+# include <stdint.h>
+# include <limits.h>
 
 typedef struct	s_struc
 {
@@ -59,7 +60,7 @@ t_struc		*p_converse(t_struc *form);
 t_struc		*p_width(t_struc *form);
 t_struc		*p_press(t_struc *form);
 int			ft_separ_fnc(t_struc *form);
-t_struc		*p_len(t_struc *form);
+t_struc		*p_len(t_struc *form, int j, char *forma);
 t_struc		*pt_char(t_struc *form);
 void			*pt_width_c(t_struc *form, char c, int a);
 t_struc		*pt_persent(t_struc *form);

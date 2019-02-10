@@ -26,7 +26,7 @@ t_struc	*choose_type(t_struc *form)
 		ft_bases(form, 16);
 	else if (form->s_flag == 'o')
 		ft_bases(form, 8);
-	else if (form->s_flag == 'u')
+	else if (form->s_flag == 'u' || form->s_flag == 'U')
 		ft_bases(form, 10);
 	else if (form->s_flag == 'b')
 		ft_bases(form, 2);
@@ -35,5 +35,7 @@ t_struc	*choose_type(t_struc *form)
 		form->hash = '#';
 		ft_bases(form, 16);
 	}
+	//else if (form->s_flag == 'f')
+		//pr_float(form);
 	return (form);
 }

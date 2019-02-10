@@ -11,10 +11,11 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <math.h>
 
 int	main(void)
 {
-/* 
+/*
 	ft_printf("\n");
   ft_printf("%%\n");
   ft_printf("%d\n", 42);
@@ -58,7 +59,10 @@ printf("%s\n", "................................\n");
 	printf("%s\n",".............................\n" );*/
 	//ft_printf("MY: %p\n", NULL);
 
-ft_printf("%b", 15);
+
+ft_printf("%hU", 4294967296);
+
+
 /*	//printf("MY: %p\n", NULL);
 	int i = ft_printf("|%.0p|\t\t|%6p|\t\t|%6.p|\t|%10.6p|", NULL,NULL,NULL,NULL);
 	 printf("\n" );
@@ -68,13 +72,13 @@ printf("%s\n","=================================================================
 *
 	printf("M: %d  O: %d\n",i, j );
 	 //printf("%.2u", 0);
-*/	 
+*/
 /*
 	 int nmb = 4245;
 		#define CNV "i"
 		printf("\n   |"CNV"|:\n");
 		//printf("|%1.1"CNV"|\t\t|%5.1"CNV"|\t\t|%5.3"CNV"|\t\t|%1.5"CNV"|\t",nmb, nmb, nmb, nmb);
-		
+
 		printf("ORI |%1.1"CNV"|\t\t|%5.3"CNV"|\t\t|%5.4"CNV"|\t\t|%1.5"CNV"|",-nmb, -nmb, -nmb, -nmb);
 	printf("\n ");
 		ft_printf("MYI |%1.1"CNV"|\t\t|%5.3"CNV"|\t\t|%5.4"CNV"|\t\t|%1.5"CNV"|",-nmb, -nmb, -nmb, -nmb);
@@ -88,19 +92,19 @@ printf("%s\n","=================================================================
 	//ft_printf("%c\n", 'R');
 	//ft_printf("%s\n", "printstring, yoyoyo");
 	//ft_printf("%d\n", 1);
-		
+
 	// ft_printf("%5c", 'f');
 	// y = ft_printf("%#x", 42);
 	//ft_printf("% d\n", -42);
 
 
 	/*
-		
+
 			ft_printf("my: %--3%\n");
 			ft_printf("my: %-%\n");
 			ft_printf("my: %05%\n");
 			ft_printf("my: %5%\n");
-	*/			
+	*/
 				//ft_printf("my: %-c ... %c\n", 'Fcuk', 'you');
 				//ft_printf("my: %05c .. %c\n", 'Fcuk', 'you');
 				//ft_printf("my: %5c . %c\n", 'Fcuk', 'you');
@@ -111,14 +115,14 @@ printf("%s\n","=================================================================
 
 	//ft_printf("%523d\n", -2);
 	//ft_printf("%s %s\n", "test", "test2");
-	
+
 	// printf("\nWMY: %d\n", y );
-	
+
 	//ft_printf("|------------------------------------|\nend of my printf\n|------------------------------------|");
 	//ft_printf("\n");
-	
+
 	// printf("%s\n", "............................................................ORIGINAL:" );
-	
+
 
 	//printf("DD");
 	//printf("%*s", "d", '\n');
@@ -139,7 +143,7 @@ printf("%s\n","=================================================================
 	//printf("% d\n", -42);
 	//printf("%5c", 'f');
 //	i = printf("my: %+d %+d\n%-5d\n" , -3384747, 4, 42);
-	
+
 	//printf("or: %d %d\n", 233, 12);
 		/*printf("or: %--3%\n");
 		printf("or: %-%\n");

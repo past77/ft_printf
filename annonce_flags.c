@@ -52,24 +52,22 @@ t_struc	*p_specifer(t_struc *form)
 	return (form);
 }
 
-t_struc			*p_len(t_struc *form)
+t_struc			*p_len(t_struc *form, int j, char *forma)
 {
-	int j;
-
-	j = 0;
+	forma = form->format;
 	while(form->lens[j] != '\0')
 	{
 		while(form->lens[j] == form->format[form->i])
 		{
-			if (form->format[form->i] == 'l' && form->format[form->i + 1] == 'l')
+			if (forma[form->i] == 'l' && forma[form->i + 1] == 'l')
 				form->ll = 1;
-			else if (form->format[form->i] == 'l' && form->format[form->i + 1] != 'l')
+			else if (forma[form->i] == 'l' && forma[form->i + 1] != 'l')
 				form->l = 1;
-			else if (form->format[form->i] == 'L' && form->format[form->i + 1] != 'L')
+			else if (forma[form->i] == 'L' && forma[form->i + 1] != 'L')
 				form->L = 1;
-			else if (form->format[form->i] == 'h' && form->format[form->i + 1] == 'h')
+			else if (forma[form->i] == 'h' && forma[form->i + 1] == 'h')
 				form->hh = 1;
-			else if (form->format[form->i] == 'h' && form->format[form->i + 1] != 'h')
+			else if (forma[form->i] == 'h' && forma[form->i + 1] != 'h')
 				form->h = 1;
 			else if (form->format[form->i] == 'j')
 				form->j = 1;
@@ -80,12 +78,10 @@ t_struc			*p_len(t_struc *form)
 		j++;
 	}
 	return (form);
-
-} 
+}
 
 t_struc		*p_press(t_struc *form)
 {
-
 	while (form->format[form->i] == '.')
 	{
 		form->i++;
@@ -109,4 +105,4 @@ t_struc		*p_width(t_struc *form)
 			form->i++;
 	}
 	return (form);
-} 
+}
