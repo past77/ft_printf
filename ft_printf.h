@@ -112,6 +112,13 @@ int				pt_pointer(t_struc *form);
 void			fill_uni(t_struc *form, char a, int i);
 t_struc			*prnt_p(t_struc *form, char *p, int i);
 
+t_struc			*pr_float(t_struc *form);
+void			sings_flt(t_struc *form, long double val);
+void			make_chaos(t_struc *form, long double val);
+char			*ft_exeptiontoa(double n);
+
+
+
 size_t			ft_strlen(const char *str);
 int				ft_strcmp(char *s1, char *s2);
 int				ft_atoi(const char *str);
@@ -131,5 +138,6 @@ char			*ft_strcpy(char *dst, const char *src);
 char			*ft_strdup(const char *src);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 char			*ft_itoa(int n);
+char			*ft_longtoa(long n)
 
 #endif
