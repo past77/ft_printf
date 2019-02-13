@@ -54,7 +54,7 @@ int			ft_parse_f(t_struc *form)
 		}
 		else
 		{
-			ft_putchar(form->format[form->i]);
+				ft_putchar(form->format[form->i]);
 			form->ret_nb++;
 		}
 		form->i++;

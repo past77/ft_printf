@@ -29,7 +29,7 @@ static int		llen_of_nbr(long n)
 	return (len);
 }
 
-char			*ft_longtoa(long n)
+char			*ft_ltoa(long n)
 {
 	long	tmp;
 	int		len;
@@ -56,17 +56,5 @@ char			*ft_longtoa(long n)
 	return (str);
 }
 
-char	*ft_exeptiontoa(double n)
-{
-	unsigned long long *mass;
 
-	mass = (unsigned long long *)&n;
-	if (*mass >> 63 & 1)
-		return (ft_strdup("-0"));
-	if (!n)
-		return (ft_strdup("0"));
-	if (n == LONG_MIN)
-		return (ft_strdup("-9223372036854775808"));
-	return (NULL);
-}
 
