@@ -35,7 +35,7 @@ t_struc	*choose_type(t_struc *form)
 		form->hash = '#';
 		ft_bases(form, 16);
 	}
-	//else if (form->s_flag == 'f')
-		//pr_float(form);
+	else if (form->s_flag == 'f')
+		pr_float(form);
 	return (form);
 }

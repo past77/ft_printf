@@ -27,13 +27,13 @@ void			fill_hash(t_struc *form)
 		hash = lhs ? ft_strdup("0X") : ft_strdup("0");
 	if (form->zero == '0')
 	{
-		form->width = (hs == 1 || lhs == 1) ? (form->width - 2) : (form->width - 1);
+		form->width -= (hs == 1 || lhs == 1) ? 2 : 1;
 		fill_width(form);
 	}
 	if (ft_strncmp(form->help, "0", 1) || (form->s_flag != 'o'))
 	{
-		if (form->press == 0i && form->s_flag == 'p')
-			form->help =ft_strdup("");
+		if (form->press == 'i' && form->s_flag == 'p')
+			form->help = ft_strdup("");
 		buf = form->help;
 		form->help = ft_strjoin(hash, buf);
 		free(buf);
@@ -43,17 +43,17 @@ void			fill_hash(t_struc *form)
 
 void			fill_zero(t_struc *form)
 {
-	size_t		i;
-	size_t		presicion;
+	int			i;
+	int			presicion;
 	char		*buff;
 	char		*part;
 
 	i = 0;
-	presicion = (size_t)form->press;
-	if (presicion <= ft_strlen(form->help))
+	presicion = form->press;
+	if (presicion <= (int)ft_strlen(form->help))
 		return ;
-	buff = (char*)ft_memalloc(presicion - ft_strlen(form->help) + 1);
-	while (i < presicion - ft_strlen(form->help))
+	buff = (char*)ft_memalloc(presicion - (int)ft_strlen(form->help) + 1);
+	while (i < presicion - (int)ft_strlen(form->help))
 	{
 		buff[i] = '0';
 		i++;
@@ -66,18 +66,18 @@ void			fill_zero(t_struc *form)
 
 void			fill_width(t_struc *form)
 {
-	size_t		i;
-	size_t		j;
+	int			i;
+	int			j;
 	char		*fa;
 	char		*sol;
 
-	i = (size_t)form->width;
-	if (ft_strlen(form->help) > i)
+	i = form->width;
+	if ((int)ft_strlen(form->help) > i)
 		return ;
 	j = 0;
 	fa = form->help;
-	sol = (char*)ft_memalloc(i - ft_strlen(form->help) + 1);
-	while (j < i - ft_strlen(form->help))
+	sol = (char*)ft_memalloc(i - (int)ft_strlen(form->help) + 1);
+	while (j < i - (int)ft_strlen(form->help))
 		sol[j++] = (form->zero == '0' ? '0' : ' ');
 	sol[j] = '\0';
 	if (form->minus == '-')
@@ -92,15 +92,16 @@ void			fill_width(t_struc *form)
 	free(fa);
 }
 
-char			*ignore_zero(t_struc *form, size_t d)
+char			*ignore_zero(t_struc *form, int d)
 {
 	char		*sol;
-	size_t		mi;
+	int			mi;
+	int			end;
 
-
+	end = d - (int)ft_strlen(form->help);
 	mi = 0;
-	sol = (char*)ft_memalloc(d - ft_strlen(form->help) + 1);
-	while (mi < d - ft_strlen(form->help))
+	sol = (char*)ft_memalloc(end + 1);
+	while (mi < end)
 		sol[mi++] = ' ';
 	sol[mi] = '\0';
 	return (sol);
