@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME = libftprintf.a
-FLAGS = -Wall -Wextra -Werror 
+FLAGS = -Wall -Wextra -Werror
 CC = gcc
 HEADER = -I ft_printf
 
@@ -27,11 +27,10 @@ $(NAME) :
 		$(CC) $(FLAGS) $(HEADER) -c  $(SRC)
 		ar rc $(NAME) $(OBJ)
 		ranlib $(NAME)
-clean:	
+clean:
 	rm -f $(OBJ)
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
-
