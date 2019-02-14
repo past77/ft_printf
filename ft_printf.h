@@ -30,8 +30,9 @@ typedef struct	s_struc
 	char		minus;
 	char		plus;
 	char		hash;
+	char		br;
 	int			width;
-	int			L;
+	int			lo;
 	int			l;
 	int			ll;
 	int			h;
@@ -52,7 +53,7 @@ int				ft_printf(const char *format, ...);
 
 t_struc			*ft_init_li(t_struc *form);
 t_struc			parse_a(t_struc *form);
-int				ft_parse_f(t_struc *form);
+int				ft_parse_f(t_struc *form, const char *format);
 t_struc			*ft_init_other(t_struc *form);
 t_struc			*p_specifer(t_struc *form);
 t_struc			*choose_type(t_struc *form);
@@ -102,7 +103,7 @@ void			fill_hash(t_struc *form);
 void			fill_width(t_struc *form);
 void			fill_zero(t_struc *form);
 
-char			*ignore_zero(t_struc *form, size_t d);
+char			*ignore_zero(t_struc *form, int d);
 uintmax_t		do_unsign_nb(t_struc *form);
 t_struc			*parse_exclusion(t_struc *form, uintmax_t val);
 t_struc			*excl(t_struc *form, uintmax_t val, int i);
@@ -121,8 +122,11 @@ char			*prn_prec_flt(char *prec, int p, long double *val, int i);
 t_struc			*rape_prec_flt(t_struc *form, char *buf, char *prec);
 char			*ft_ltoa(long n);
 
-t_struc		*prn_width_flt(t_struc *form);
+t_struc			*prn_width_flt(t_struc *form);
 
+void			parse_brackets(const char *format, t_struc *form);
+void			parse_standr_color(const char *format, t_struc *form);
+void			parse_back_color(const char *format, t_struc *form);
 
 size_t			ft_strlen(const char *str);
 int				ft_strcmp(char *s1, char *s2);
@@ -143,6 +147,5 @@ char			*ft_strcpy(char *dst, const char *src);
 char			*ft_strdup(const char *src);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 char			*ft_itoa(int n);
-
 
 #endif

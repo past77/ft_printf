@@ -1,3 +1,0 @@
-/Users/ppolozhe/Desktop/MY_PRINTF/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/ppolozhe/Desktop/MY_PRINTF/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/ppolozhe/Desktop/MY_PRINTF/cmake-build-debug/CMakeFiles/test.dir

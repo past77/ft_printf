@@ -66,6 +66,11 @@ t_struc			*work_w_press(t_struc *form, intmax_t num)
 	int			wi;
 
 	wi = form->width;
+	if (form->space == ' ' && form->press == 0 && num == 0)
+	{
+		form->ret_nb += write(1, " ", 1);
+		return (0);
+	}
 	if ((form->press == 0 && wi == 0) || (form->press == 0 && wi != 0))
 		ft_ret(form, num);
 	else if (form->width >= 0)

@@ -12,9 +12,9 @@
 
 #include "ft_printf.h"
 
-t_struc		*p_converse(t_struc *form)
+t_struc			*p_converse(t_struc *form)
 {
-	int j;
+	int			j;
 
 	j = 0;
 	while (form->sign[j] != '\0')
@@ -38,9 +38,9 @@ t_struc		*p_converse(t_struc *form)
 	return (form);
 }
 
-t_struc	*p_specifer(t_struc *form)
+t_struc			*p_specifer(t_struc *form)
 {
-	int j;
+	int			j;
 
 	j = 0;
 	while (form->specificators[j] != '\0')
@@ -64,7 +64,7 @@ t_struc			*p_len(t_struc *form, int j, char *forma)
 			else if (forma[form->i] == 'l' && forma[form->i + 1] != 'l')
 				form->l = 1;
 			else if (forma[form->i] == 'L' && forma[form->i + 1] != 'L')
-				form->L = 1;
+				form->lo = 1;
 			else if (forma[form->i] == 'h' && forma[form->i + 1] == 'h')
 				form->hh = 1;
 			else if (forma[form->i] == 'h' && forma[form->i + 1] != 'h')
@@ -80,7 +80,7 @@ t_struc			*p_len(t_struc *form, int j, char *forma)
 	return (form);
 }
 
-t_struc		*p_press(t_struc *form)
+t_struc			*p_press(t_struc *form)
 {
 	while (form->format[form->i] == '.')
 	{
@@ -96,7 +96,7 @@ t_struc		*p_press(t_struc *form)
 	return (form);
 }
 
-t_struc		*p_width(t_struc *form)
+t_struc			*p_width(t_struc *form)
 {
 	if (ft_isdigit(form->format[form->i]))
 	{

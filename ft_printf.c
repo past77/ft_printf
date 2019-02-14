@@ -26,7 +26,7 @@ int			ft_printf(const char *format, ...)
 	form = ft_init_li(form);
 	va_start(form->ap, format);
 	if (format)
-		form->ret_nb = ft_parse_f(form);
+		form->ret_nb = ft_parse_f(form, format);
 	revenir = form->ret_nb;
 	form->ret_nb = 0;
 	va_end(form->ap);
@@ -41,20 +41,22 @@ t_struc		*ft_init_li(t_struc *form)
 	return (form);
 }
 
-int			ft_parse_f(t_struc *form)
+int			ft_parse_f(t_struc *form, const char *format)
 {
-	if (ft_strcmp(form->format, "%") == 0 || form->format == '\0')
+	if (form->format[form->i] == '{')
+		parse_brackets(format, form);
+	else if (ft_strcmp(form->format, "%") == 0 || form->format == '\0')
 		return (0);
 	while (form->format[form->i] != '\0')
 	{
-		if (form->format[form->i] == '%')
+		if (form->format[form->i] == '%' || form->format[form->i] == '{')
 		{
 			ft_init_other(form);
 			ft_separ_fnc(form);
 		}
 		else
 		{
-				ft_putchar(form->format[form->i]);
+			ft_putchar(form->format[form->i]);
 			form->ret_nb++;
 		}
 		form->i++;
@@ -64,7 +66,7 @@ int			ft_parse_f(t_struc *form)
 
 t_struc		*ft_init_other(t_struc *form)
 {
-	form->specificators = "idscuobfxpUX%";
+	form->specificators = "idscuobfxpUX{%";
 	form->sign = "-+# 0";
 	form->lens = "lhzjL";
 	form->index = '\0';
@@ -72,11 +74,13 @@ t_struc		*ft_init_other(t_struc *form)
 	form->h = '\0';
 	form->ll = '\0';
 	form->hh = '\0';
+	form->lo = '\0';
 	form->s_flag = '\0';
 	form->plus = '\0';
 	form->minus = '\0';
 	form->space = '\0';
 	form->hash = '\0';
+	form->br = '\0';
 	form->zero = '\0';
 	form->press = -1;
 	form->width = 0;

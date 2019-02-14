@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int	ft_atoi(const char *str)
+int					ft_atoi(const char *str)
 {
 	int				i;
 	long long int	minus;
@@ -39,7 +39,7 @@ int	ft_atoi(const char *str)
 	return (res * minus);
 }
 
-size_t		len_of_nbr(intmax_t nb)
+size_t				len_of_nbr(intmax_t nb)
 {
 	size_t i;
 
@@ -49,27 +49,33 @@ size_t		len_of_nbr(intmax_t nb)
 	return (i);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char				*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*ss1;
-	char	*ss2;
-	char	*fml;
-	int		len;
+	char	*r;
+	int		i;
+	int		j;
 
 	if (!s1 || !s2)
 		return (NULL);
-	ss1 = (char *)s1;
-	ss2 = (char *)s2;
-	len = ft_strlen(ss1) + ft_strlen(ss2);
-	fml = (char *)malloc(sizeof(*fml) * (len + 1));
-	if (fml == NULL)
+	i = -1;
+	j = -1;
+	while (s1[++i])
+		;
+	while (s2[++j])
+		;
+	if (!(r = (char *)ft_memalloc(sizeof(char) * (i + j + 1))))
 		return (NULL);
-	ft_strcpy(fml, ss1);
-	ft_strcat(fml, s2);
-	return (fml);
+	i = -1;
+	while (s1[++i])
+		r[i] = s1[i];
+	j = -1;
+	while (s2[++j])
+		r[i++] = s2[j];
+	r[i] = '\0';
+	return (r);
 }
 
-char	*ft_strcat(char *s1, const char *s2)
+char				*ft_strcat(char *s1, const char *s2)
 {
 	int cout;
 	int i;
@@ -85,7 +91,7 @@ char	*ft_strcat(char *s1, const char *s2)
 	return (s1);
 }
 
-char	*ft_strcpy(char *dst, const char *src)
+char				*ft_strcpy(char *dst, const char *src)
 {
 	int i;
 

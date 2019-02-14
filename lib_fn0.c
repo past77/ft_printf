@@ -56,5 +56,25 @@ char			*ft_ltoa(long n)
 	return (str);
 }
 
+char			*ft_itoa(int n)
+{
+	size_t			len;
+	char			*str;
+	unsigned int	new_n;
 
-
+	len = len_of_nbr(n);
+	new_n = n;
+	if (n < 0)
+	{
+		new_n = -n;
+		len++;
+	}
+	if (!(str = ft_memalloc(len + 1)))
+		return (NULL);
+	str[--len] = new_n % 10 + '0';
+	while (new_n /= 10)
+		str[--len] = new_n % 10 + '0';
+	if (n < 0)
+		str[0] = '-';
+	return (str);
+}
